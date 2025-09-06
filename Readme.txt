@@ -1,3 +1,6 @@
+https://davidntompkins.itch.io/body-control
+This game made with claude code and a bunch of other stuff. The first prompt is below:
+
 Hello! This is the directory for a new game that we are working on. This game is a fully web html/js game that will be packaged and run on itch.io. To that end, it should use something like node for an environment. 
 
 The game is called Body Control, and is about a tiny alien who is trying to fit in with humanity while 'piloting' a robot that looks and works like a human. It's a bit tongue in cheek and the majority of the gameplay is about responding in time to bodily cues that most humans do automatically. 
