@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background-color: #0a0a0a;
+    color: #00ff41;
+    overflow: hidden;
+    height: 100vh;
+    font-size: 13px; /* Increased from 11px */
+    line-height: 1.2;
+}
+
+#terminal-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 10px; /* Reduced padding for itch.io */
+    background: linear-gradient(45deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+.terminal-section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Startup Sequence */
+#startup-sequence {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#startup-text {
+    font-size: 16px; /* Increased from 14px */
+    white-space: pre-wrap;
+}
+
+/* Main Interface */
+#main-interface {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#terminal-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header-line {
+    color: #00aa33;
+    font-weight: bold;
+}
+
+.system-title {
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 0;
+    background: rgba(0, 255, 65, 0.1);
+}
+
+#game-area {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 15px; /* Reduced gap */
+    flex: 1;
+    height: calc(100vh - 120px); /* Less space for header */
+}
+
+.panel {
+    border: 1px solid #00aa33;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.panel-header {
+    color: #00aa33;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid #004422;
+    padding-bottom: 5px;
+}
+
+/* Center Panel - ASCII Video */
+#center-panel {
+    text-align: center;
+    font-size: 9px; /* Slightly larger */
+    line-height: 1;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+}
+
+#ascii-video {
+    flex: 1; /* Give equal space to video and events */
+    overflow: hidden;
+    white-space: pre;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Vitals Display */
+.vital-item {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #003322;
+    background: rgba(0, 50, 20, 0.3);
+}
+
+.vital-label {
+    color: #00ff88;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.vital-bar {
+    width: 100%;
+    height: 20px;
+    background: #001122;
+    border: 1px solid #004444;
+    position: relative;
+    overflow: hidden;
+}
+
+.vital-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+.oxygen-bar { background: linear-gradient(90deg, #ff4444, #ffff44, #44ff44); }
+.heart-bar { background: linear-gradient(90deg, #4444ff, #44ffff, #ff4444); }
+.eyes-bar { background: linear-gradient(90deg, #444444, #888888, #ffffff); }
+
+.vital-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+    font-size: 10px;
+}
+
+.vital-controls {
+    font-size: 9px;
+    color: #00aa33;
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+/* Status Display */
+.status-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    background: rgba(0, 0, 50, 0.3);
+    border-left: 3px solid #0066ff;
+}
+
+.suspicion-meter {
+    width: 100%;
+    height: 30px;
+    background: #001100;
+    border: 2px solid #ff4444;
+    margin-top: 10px;
+    position: relative;
+}
+
+.suspicion-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ffff00, #ff8800, #ff0000);
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+.suspicion-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+    font-size: 10px;
+}
+
+/* Event Display */
+.event-display {
+    background: rgba(255, 0, 0, 0.95);
+    border: 2px solid #ff0000;
+    padding: 15px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 18px; /* Increased from 14px for better visibility */
+    line-height: 1.4;
+    text-align: left;
+    min-height: auto;
+    flex-shrink: 0;
+    font-weight: bold;
+    z-index: 1000;
+    filter: none !important;
+    animation: urgentFlash 1s infinite;
+}
+
+.event-display.urgent {
+    animation: urgentFlash 0.5s infinite;
+}
+
+@keyframes urgentFlash {
+    0%, 100% { 
+        background: rgba(255, 0, 0, 0.95);
+        border-color: #ff0000;
+    }
+    50% { 
+        background: rgba(255, 100, 100, 0.98);
+        border-color: #ffff00;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { border-color: #ff4444; }
+    50% { border-color: #ffff00; }
+}
+
+/* Event Popup - keep for backwards compatibility */
+#event-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #ff8800;
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+    z-index: 1000;
+    animation: pulse 1s infinite;
+}
+
+/* Color variations for different states */
+.warning { color: #ffaa00; }
+.danger { color: #ff4444; }
+.success { color: #44ff44; }
+.info { color: #44aaff; }
+
+/* Blur effect for eyes */
+.blurred {
+    filter: blur(2px);
+    transition: filter 0.3s ease;
+}
+
+/* Screen effects */
+.oxygen-low {
+    filter: brightness(0.15) contrast(1.2);
+    transition: filter 0.5s ease;
+}
+
+.oxygen-high {
+    filter: brightness(1.8) contrast(0.7);
+    transition: filter 0.5s ease;
+}
+
+/* Blink effect */
+.blinking {
+    background-color: #000000 !important;
+    color: #000000 !important;
+}
+
+/* Alert animation */
+@keyframes alertPulse {
+    0% { opacity: 0; transform: translateX(-50%) scale(0.8); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}

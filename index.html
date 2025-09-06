@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Control v1.0</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="terminal-container">
+        <div id="startup-sequence" class="terminal-section">
+            <div id="startup-text"></div>
+        </div>
+        
+        <div id="main-interface" class="terminal-section hidden">
+            <div id="terminal-header">
+                <div class="header-line">═══════════════════════════════════════════════════════════════════════════════</div>
+                <div class="system-title">BIOLOGICAL CONTROL INTERFACE v2.1.7 - STATUS: ACTIVE</div>
+                <div class="header-line">═══════════════════════════════════════════════════════════════════════════════</div>
+            </div>
+            
+            <div id="game-area">
+                <div id="left-panel" class="panel">
+                    <div class="panel-header">┌─ VITALS ─┐</div>
+                    <div id="vitals-display"></div>
+                </div>
+                
+                <div id="center-panel" class="panel">
+                    <div class="panel-header">┌─ VISUAL CORTEX ─┐</div>
+                    <div id="ascii-video"></div>
+                    <div id="event-display" class="event-display hidden"></div>
+                </div>
+                
+                <div id="right-panel" class="panel">
+                    <div class="panel-header">┌─ STATUS ─┐</div>
+                    <div id="status-display"></div>
+                </div>
+            </div>
+            
+            <div id="event-popup" class="hidden">
+                <div id="event-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
